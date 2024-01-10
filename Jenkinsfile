@@ -14,6 +14,7 @@ pipeline {
         APPS_JSON_BASE64 = sh(script: "echo \${APPS_JSON} | base64 -w 0", returnStdout: true).trim()
     }
 
+    stages {
         stage('Load Custom Apps') {
             steps {
                 script {
@@ -51,3 +52,4 @@ pipeline {
             }
         }
     }
+}
