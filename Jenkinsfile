@@ -3,16 +3,9 @@ pipeline {
 
     stages {
         stage('Load Custom Apps') {
-            steps {
-                script {
-                    // Assuming the Dockerfile is in the root of the project
-                    docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").build("--build-arg APPS_JSON_BASE64=${APPS_JSON_BASE64} .")
-                }
-            }
-        }
 
-        stage('Build Docker Image') {
-            steps {
+            stage('Build Docker Image') {
+                steps {
                 script {
                     docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").inside {
                         sh '''
@@ -42,4 +35,5 @@ pipeline {
             }
         }
     }
+}
 }
