@@ -39,7 +39,7 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials-id', passwordVariable: 'dckr_pat_8e1C_ngCwDIrbiJllUyaVXo67yE', usernameVariable: 'usman89')]) {
                         docker.withRegistry("https://index.docker.io/v1/", "Docker Hub") {
-                            docker.image(usman89/myrepo:customapp0.0.10).push()
+                            docker.image.usman89/myrepo:customapp0.0.10.push()
                         }
                     }
                 }
