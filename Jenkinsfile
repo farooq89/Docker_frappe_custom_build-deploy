@@ -12,7 +12,6 @@ pipeline {
           }
         ] '''
         APPS_JSON_BASE64 = sh(script: "echo \${APPS_JSON} | base64 -w 0", returnStdout: true).trim()
-        BUILDAH_PATH = '/usr/bin/buildah' // Adjust the path based on your system
     }
 
     stages {
@@ -20,7 +19,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    ${BUILDAH_PATH} build \
+                    $buildah build \
                         --build-arg=FRAPPE_PATH=https://github.com/frappe/frappe \
                         --build-arg=FRAPPE_BRANCH=version-14 \
                         --build-arg=PYTHON_VERSION=3.11.6 \
