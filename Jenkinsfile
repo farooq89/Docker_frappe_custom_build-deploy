@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Load Custom Apps') {
 
-            stage('Build Docker Image') {
+        stage('Build Docker Image') {
                 steps {
                 script {
                     docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").inside {
