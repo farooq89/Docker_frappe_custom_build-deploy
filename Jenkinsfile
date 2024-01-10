@@ -14,14 +14,14 @@ pipeline {
         APPS_JSON_BASE64 = sh(script: "echo \${APPS_JSON} | base64 -w 0", returnStdout: true).trim()
     }
 
-//     stages {
-//         stage('Load Custom Apps') {
-//             steps {
-//                 script {
-//                     docker.build("${DOCKER_HUB_REPO}:${IMAGE_NAME}", "--build-arg APPS_JSON_BASE64=${APPS_JSON_BASE64} .")
-//                 }
-//             }
-//         }
+    stages {
+        stage('Load Custom Apps') {
+            steps {
+                script {
+                    docker.build("${DOCKER_HUB_REPO}:${IMAGE_NAME}", "--build-arg APPS_JSON_BASE64=${APPS_JSON_BASE64} .")
+                }
+            }
+        }
 
 //         stage('Build Docker Image') {
 //             steps {
