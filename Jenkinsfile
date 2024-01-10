@@ -11,9 +11,10 @@ pipeline {
             "branch": "master"
           }
         ] '''
-        // APPS_JSON_BASE64 = sh(script: "echo \${APPS_JSON} | base64 -w 0", returnStdout: true).trim()
-        export APPS_JSON_BASE64=$(echo ${APPS_JSON} | base64 -w 0)
+        APPS_JSON_BASE64 = sh(script: "echo \${APPS_JSON} | base64 -w 0", returnStdout: true).trim()
+        // export APPS_JSON_BASE64=$(echo ${APPS_JSON} | base64 -w 0)
     }
+
 
     stages {
         stage('Build Docker Image') {
