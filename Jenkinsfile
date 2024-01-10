@@ -1,3 +1,5 @@
+import docker
+
 pipeline {
     agent any
 
