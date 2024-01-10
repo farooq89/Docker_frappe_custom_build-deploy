@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_HUB_REPO = 'usman89/myrepo'
-        IMAGE_NAME = 'customapp0.0.10'
+        IMAGE_NAME = 'customapp0.0.1'
         APPS_JSON = '''
         [
           {
@@ -26,7 +26,7 @@ pipeline {
                             --build-arg=PYTHON_VERSION=3.11.6 \
                             --build-arg=NODE_VERSION=18.18.2 \
                             --build-arg=APPS_JSON_BASE64=${APPS_JSON_BASE64} \
-                            --tag=${DOCKER_HUB_REPO}:${IMAGE_NAME} \
+                            --tag=usman89/myrepo:customapp0.0.10 \
                             --file=images/custom/Containerfile .
                         '''
                     }
@@ -39,7 +39,7 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials-id', passwordVariable: 'dckr_pat_8e1C_ngCwDIrbiJllUyaVXo67yE', usernameVariable: 'usman89')]) {
                         docker.withRegistry("https://index.docker.io/v1/", "Docker Hub") {
-                            docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").push()
+                            docker.image(usman89/myrepo:customapp0.0.10).push()
                         }
                     }
                 }
