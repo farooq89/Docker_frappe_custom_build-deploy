@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    buildah build \
+                    docker build \
                         --build-arg=FRAPPE_PATH=https://github.com/frappe/frappe \
                         --build-arg=FRAPPE_BRANCH=version-14 \
                         --build-arg=PYTHON_VERSION=3.11.6 \
