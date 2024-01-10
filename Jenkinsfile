@@ -20,7 +20,7 @@ pipeline {
                 script {
                     docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").inside {
                         sh '''
-                        docker build \
+                        buildah build\
                             --build-arg=FRAPPE_PATH=https://github.com/frappe/frappe \
                             --build-arg=FRAPPE_BRANCH=version-14 \
                             --build-arg=PYTHON_VERSION=3.11.6 \
