@@ -55,7 +55,7 @@ pipeline {
                             ssh -o StrictHostKeyChecking=no ubuntu@192.168.10.114 "
                                 ls \\
                                 && cd frappe_docker \\
-                                ls
+                                ls \\
                                 && docker-compose -f pwd.yml down
                             "
                        '''
