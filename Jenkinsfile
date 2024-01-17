@@ -34,17 +34,28 @@ pipeline {
         //         }
         //     }
         // }
-        stage('login'){
-            steps{
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            }
-        }
-        stage('Push to Docker Hub') {
-            steps {
-                script {
-                        docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").push()
+        // stage('login'){
+        //     steps{
+        //         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        //     }
+        // }
+        // stage('Push to Docker Hub') {
+        //     steps {
+        //         script {
+        //                 docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").push()
                         
-                }
+        //         }
+        //     }
+        // }
+        stage('SSH to 114'){
+         steps{
+            sshagent(credentials:['114']){
+               script {
+                        sh '''
+                            ssh -o StrictHostKeyChecking=no ubuntu@192.168.10.114 "
+                                ls \\
+                            "
+                       '''
             }
         }
     }
