@@ -39,16 +39,14 @@ pipeline {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-        // stage('Push to Docker Hub') {
-        //     steps {
-        //         script {
-        //             withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials-id', passwordVariable: 'DOCKER_HUB_PASSWORD', usernameVariable: 'DOCKER_HUB_USERNAME')]) {
-        //                 docker.withRegistry("https://index.docker.io/v1/", "Docker Hub") {
-        //                     docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").push()
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                        docker.withRegistry("https://index.docker.io/v1/", "Docker Hub") {
+                            docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").push()
+                        }
+                    }
+                }
+            }
+        }
     }
-}
