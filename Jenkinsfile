@@ -56,7 +56,7 @@ pipeline {
                                 ls \\
                                 && cd frappe_docker \\
                                 && ls \\
-                                && docker-compose -f pwd.yml up 
+                                && docker ps 
                             "
                        '''
             }
