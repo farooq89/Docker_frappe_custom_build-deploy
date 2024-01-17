@@ -42,11 +42,12 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                        docker.withRegistry("https://index.docker.io/v1/", "Docker Hub") {
-                            docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").push()
+                        docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").push()
+                        // docker.withRegistry("https://index.docker.io/v1/", "Docker Hub") {
+                        //     docker.image("${DOCKER_HUB_REPO}:${IMAGE_NAME}").push()
                         }
                     }
                 }
             }
         }
-    }
+    
