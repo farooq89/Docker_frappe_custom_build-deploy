@@ -56,7 +56,7 @@ pipeline {
                                 ls \\
                                 && cd frappe_docker \\
                                 && ls \\
-                                && sudo su \\
+                                && sudo su -s \\
                                 && docker ps \\
                                 && docker compose -f pwd.yml down \\
                                 && docker compose -f pwd.yml up
