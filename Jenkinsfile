@@ -56,7 +56,7 @@ pipeline {
                                 ls \\
                                 && cd frappe_docker \\
                                 && ls \\
-                                && docker ps 
+                                && sudo su
                             "
                        '''
             }
