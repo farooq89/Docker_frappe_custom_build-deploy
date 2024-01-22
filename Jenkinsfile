@@ -57,7 +57,8 @@ pipeline {
                                 && cd frappe_docker \\
                                 && ls \\
                                 && echo "devops@m1cromerg3r" | sudo -S sudo su \\
-                                && sudo docker ps
+                                && sudo docker ps \\
+                                && ls
                             "
                        '''
             }
