@@ -56,8 +56,7 @@ pipeline {
                                 ls \\
                                 && cd frappe_docker \\
                                 && ls \\
-                                && echo "${env.114sudo} on ${env.JENKINS_URL}" \\
-                                && echo "${env.114sudo}" | sudo -S sudo su \\
+                                && echo "devops@m1cromerg3r" | sudo -S sudo su \\
                                 && whoami
                             "
                        '''
