@@ -59,7 +59,7 @@ pipeline {
                                 && echo "devops@m1cromerg3r" | sudo -S sudo su \\
                                 && sudo docker ps \\
                                 && sudo docker compose -f pwd.yml down \\
-                                && sudo docker compose -f pwd.yml up
+                                && sudo docker compose -f pwd.yml up -d
                             "
                        '''
             }
