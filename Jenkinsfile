@@ -56,7 +56,7 @@ pipeline {
                                 ls \\
                                 && cd frappe_docker \\
                                 && ls \\
-                                && echo $114sudo | sudo -S sudo su \\
+                                && echo '$114sudo' | sudo -S sudo su \\
                                 && whoami
                             "
                        '''
